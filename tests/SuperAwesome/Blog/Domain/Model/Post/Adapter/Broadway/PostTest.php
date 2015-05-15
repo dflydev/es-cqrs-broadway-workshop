@@ -38,8 +38,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_can_create()
     {
-        $this->markTestIncomplete('Post::create() does not exist.');
-
         $id = 'my-id';
 
         $this->scenario
@@ -55,8 +53,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_can_publish()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -80,8 +76,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_uncategorizes_when_publishing_with_a_different_category()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -142,8 +136,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_does_not_publish_if_nothing_changed()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -167,8 +159,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_can_tag()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -195,6 +185,83 @@ class PostTest extends AggregateRootScenarioTestCase
                 new PostWasTagged($id, $cqrs),
                 new PostWasTagged($id, $broadway),
             ])
+        ;
+    }
+
+    /** @test */
+    public function it_can_have_exactly_10_tags()
+    {
+        $id = 'my-id';
+        $title = 'the title';
+        $content = 'the content';
+        $category = 'draft';
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                new PostWasCreated($id),
+                new PostWasCategorized($id, $category),
+                new PostWasPublished($id, $title, $content, $category),
+            ])
+            ->when(function (Post $post) {
+                $post->addTag('1');
+                $post->addTag('2');
+                $post->addTag('3');
+                $post->addTag('4');
+                $post->addTag('5');
+                $post->addTag('6');
+                $post->addTag('7');
+                $post->addTag('8');
+                $post->addTag('9');
+                $post->addTag('10');
+            })
+            ->then([
+                new PostWasTagged($id, '1'),
+                new PostWasTagged($id, '2'),
+                new PostWasTagged($id, '3'),
+                new PostWasTagged($id, '4'),
+                new PostWasTagged($id, '5'),
+                new PostWasTagged($id, '6'),
+                new PostWasTagged($id, '7'),
+                new PostWasTagged($id, '8'),
+                new PostWasTagged($id, '9'),
+                new PostWasTagged($id, '10'),
+            ])
+        ;
+    }
+
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     */
+    public function it_cannot_have_more_than_10_tags()
+    {
+        $id = 'my-id';
+        $title = 'the title';
+        $content = 'the content';
+        $category = 'draft';
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                new PostWasCreated($id),
+                new PostWasCategorized($id, $category),
+                new PostWasPublished($id, $title, $content, $category),
+            ])
+            ->when(function (Post $post) {
+                $post->addTag('1');
+                $post->addTag('2');
+                $post->addTag('3');
+                $post->addTag('4');
+                $post->addTag('5');
+                $post->addTag('6');
+                $post->addTag('7');
+                $post->addTag('8');
+                $post->addTag('9');
+                $post->addTag('10');
+                $post->addTag('11');
+            })
+            ->then([])
         ;
     }
 

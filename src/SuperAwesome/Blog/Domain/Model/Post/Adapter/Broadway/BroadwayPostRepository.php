@@ -9,7 +9,7 @@ use SuperAwesome\Common\Domain\Model\Adapter\Broadway\BroadwayModelRepository;
 
 class BroadwayPostRepository implements PostRepository
 {
-    use \SuperAwesome\Common\Domain\Model\Adapter\Broadway\BroadwayModelRepository;
+    use BroadwayModelRepository;
 
     /**
      * Default constructor.
