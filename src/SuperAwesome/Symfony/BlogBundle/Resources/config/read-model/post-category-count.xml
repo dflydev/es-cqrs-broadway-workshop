@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="superawesome.blog.domain.read_model.post_category_count.repository.broadway" class="Broadway\ReadModel\ElasticSearch\ElasticSearchRepository" factory-service="broadway.read_model.elasticsearch.repository_factory" factory-method="create">
+            <argument>superawesome:blog:post</argument>
+            <argument>SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount\PostCategoryCount</argument>
+        </service>
+        <service id="superawesome.blog.domain.read_model.post_category_count.repository" class="SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount\Adapter\Broadway\BroadwayPostCategoryCountRepository">
+            <argument type="service" id="superawesome.blog.domain.read_model.post_category_count.repository.broadway" />
+        </service>
+        <service id="superawesome.blog.domain.read_model.post_category_count.projector" class="SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount\PostCategoryCountProjector">
+            <argument type="service" id="superawesome.blog.domain.read_model.post_category_count.repository" />
+        </service>
+
+        <!-- Broadway -->
+        <service id="superawesome.blog.domain.read_model.post_category_count.projector.broadway" class="SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount\Adapter\Broadway\BroadwayPostCategoryCountProjector">
+            <argument type="service" id="superawesome.blog.domain.read_model.post_category_count.projector" />
+            <tag name="broadway.domain.event_listener" />
+        </service>
+    </services>
+</container>

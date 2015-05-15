@@ -1,0 +1,19 @@
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Super Awesome Blog Tests">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <server name="KERNEL_DIR" value="app" />
+    </php>
+    <filter>
+        <whitelist>
+            <directory>src/Artensify</directory>
+            <exclude>
+                <directory>src/SuperAwesome/Symfony/*Bundle/Resources</directory>
+                <directory>src/SuperAwesome/Symfony/*Bundle/Tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

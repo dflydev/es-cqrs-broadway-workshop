@@ -1,0 +1,42 @@
+framework:
+    secret: %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing_%kernel.environment%.yml"
+        strict_requirements: %kernel.debug%
+    templating:
+        engines: ['twig']
+    profiler:
+        enabled: %kernel.debug%
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: %monolog_action_level%
+            handler:      nested
+        nested:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+
+doctrine:
+    dbal:
+        default_connection:       default
+        connections:
+            default:
+                driver:           %doctrine_dbal_db_driver%
+                dbname:           %doctrine_dbal_db_name%
+                user:             %doctrine_dbal_db_user%
+                password:         %doctrine_dbal_db_password%
+                host:             %doctrine_dbal_db_host%
+
+broadway:
+    command_handling:
+        logger:               false
+    saga:
+        repository: in_memory
+    read_model:
+        repository: elasticsearch
+        elasticsearch:
+            hosts:
+                - %elasticsearch_host%:%elasticsearch_port%

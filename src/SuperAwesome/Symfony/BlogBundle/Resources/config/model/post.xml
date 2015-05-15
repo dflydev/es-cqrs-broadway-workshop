@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="superawesome.blog.domain.model.post.repository.factory_class">SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway\BroadwayPostRepository</parameter>
+        <parameter key="superawesome.blog.domain.model.post.repository.class">SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway\BroadwayPostRepository</parameter>
+        <parameter key="superawesome.blog.domain.model.post.command_handler.class">SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway\BroadwayPostCommandHandler</parameter>
+    </parameters>
+    <services>
+        <service id="superawesome.blog.domain.model.post.repository" class="%superawesome.blog.domain.model.post.repository.class%">
+            <factory class="%superawesome.blog.domain.model.post.repository.factory_class%" method="create" />
+            <argument type="service" id="broadway.event_store" />
+            <argument type="service" id="broadway.event_handling.event_bus" />
+        </service>
+        <service id="superawesome.blog.domain.model.post.command_handler" class="%superawesome.blog.domain.model.post.command_handler.class%">
+            <argument type="service" id="superawesome.blog.domain.model.post.repository" />
+            <tag name="command_handler" />
+        </service>
+    </services>
+</container>
