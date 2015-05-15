@@ -2,9 +2,10 @@
 
 namespace SuperAwesome\Blog\Domain\ReadModel\PublishedPost;
 
+use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
 
-class PublishedPost implements SerializableInterface
+class PublishedPost implements ReadModelInterface, SerializableInterface
 {
     /**
      * @var string
@@ -61,4 +62,12 @@ class PublishedPost implements SerializableInterface
             'category' => $this->category,
         ];
     }
+
+    /**
+     * @return string
+     */
+    public function getId() {
+        return (string) $this->id;
+    }
+
 }

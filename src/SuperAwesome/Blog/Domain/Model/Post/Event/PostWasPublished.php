@@ -14,17 +14,17 @@ class PostWasPublished implements SerializableInterface
     /**
      * @var string
      */
-    private $title;
+    public $title;
 
     /**
      * @var string
      */
-    private $content;
+    public $content;
 
     /**
      * @var string
      */
-    private $category;
+    public $category;
 
     public function __construct($id, $title, $content, $category)
     {

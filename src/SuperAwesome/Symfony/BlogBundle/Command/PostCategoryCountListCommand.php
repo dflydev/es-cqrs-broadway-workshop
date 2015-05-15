@@ -21,8 +21,7 @@ class PostCategoryCountListCommand extends ContainerAwareCommand
         $repository = $this->getContainer()->get('superawesome.blog.domain.read_model.post_category_count.repository');
 
         foreach ($repository->findAll() as $postCategoryCount) {
-            $output->writeln(sprintf("15%s%3d", $postCategoryCount->getCategory(), $postCategoryCount->getCount()));
+            $output->writeln(sprintf("%15s%3d", $postCategoryCount->getCategory(), $postCategoryCount->getCount()));
         }
     }
-
 }

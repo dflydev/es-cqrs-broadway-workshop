@@ -6,15 +6,36 @@
         <parameter key="superawesome.blog.domain.model.post.repository.factory_class">SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway\BroadwayPostRepository</parameter>
         <parameter key="superawesome.blog.domain.model.post.repository.class">SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway\BroadwayPostRepository</parameter>
         <parameter key="superawesome.blog.domain.model.post.command_handler.class">SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway\BroadwayPostCommandHandler</parameter>
+
+        <parameter key="superawesome.blog.domain.model.post.command_handler.create_post_handler.class">SuperAwesome\Blog\Domain\Model\Post\Command\Handler\CreatePostHandler</parameter>
+        <parameter key="superawesome.blog.domain.model.post.command_handler.publish_post_handler.class">SuperAwesome\Blog\Domain\Model\Post\Command\Handler\PublishPostHandler</parameter>
+        <parameter key="superawesome.blog.domain.model.post.command_handler.tag_post_handler.class">SuperAwesome\Blog\Domain\Model\Post\Command\Handler\TagPostHandler</parameter>
+        <parameter key="superawesome.blog.domain.model.post.command_handler.untag_post_handler.class">SuperAwesome\Blog\Domain\Model\Post\Command\Handler\UntagPostHandler</parameter>
     </parameters>
     <services>
+        <service id="superawesome.blog.domain.model.post.command_handler.create_post_handler" class="%superawesome.blog.domain.model.post.command_handler.create_post_handler.class%">
+            <argument type="service" id="superawesome.blog.domain.model.post.repository" />
+        </service>
+        <service id="superawesome.blog.domain.model.post.command_handler.publish_post_handler" class="%superawesome.blog.domain.model.post.command_handler.publish_post_handler.class%">
+            <argument type="service" id="superawesome.blog.domain.model.post.repository" />
+        </service>
+        <service id="superawesome.blog.domain.model.post.command_handler.tag_post_handler" class="%superawesome.blog.domain.model.post.command_handler.tag_post_handler.class%">
+            <argument type="service" id="superawesome.blog.domain.model.post.repository" />
+        </service>
+        <service id="superawesome.blog.domain.model.post.command_handler.untag_post_handler" class="%superawesome.blog.domain.model.post.command_handler.untag_post_handler.class%">
+            <argument type="service" id="superawesome.blog.domain.model.post.repository" />
+        </service>
+
         <service id="superawesome.blog.domain.model.post.repository" class="%superawesome.blog.domain.model.post.repository.class%">
             <factory class="%superawesome.blog.domain.model.post.repository.factory_class%" method="create" />
             <argument type="service" id="broadway.event_store" />
             <argument type="service" id="broadway.event_handling.event_bus" />
         </service>
         <service id="superawesome.blog.domain.model.post.command_handler" class="%superawesome.blog.domain.model.post.command_handler.class%">
-            <argument type="service" id="superawesome.blog.domain.model.post.repository" />
+            <argument type="service" id="superawesome.blog.domain.model.post.command_handler.create_post_handler" />
+            <argument type="service" id="superawesome.blog.domain.model.post.command_handler.publish_post_handler" />
+            <argument type="service" id="superawesome.blog.domain.model.post.command_handler.tag_post_handler" />
+            <argument type="service" id="superawesome.blog.domain.model.post.command_handler.untag_post_handler" />
             <tag name="command_handler" />
         </service>
     </services>

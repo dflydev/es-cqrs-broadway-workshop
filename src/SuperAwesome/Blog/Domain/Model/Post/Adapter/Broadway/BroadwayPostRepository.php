@@ -5,11 +5,11 @@ namespace SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway;
 use Broadway\EventSourcing\EventSourcingRepository;
 use SuperAwesome\Blog\Domain\Model\Post\Post;
 use SuperAwesome\Blog\Domain\Model\Post\PostRepository;
-use SuperAwesome\Common\Domain\Model\Adapter\BroadwayModelRepository;
+use SuperAwesome\Common\Domain\Model\Adapter\Broadway\BroadwayModelRepository;
 
 class BroadwayPostRepository implements PostRepository
 {
-    use BroadwayModelRepository;
+    use \SuperAwesome\Common\Domain\Model\Adapter\Broadway\BroadwayModelRepository;
 
     /**
      * Default constructor.
@@ -27,7 +27,7 @@ class BroadwayPostRepository implements PostRepository
      * @return Post
      */
     public function find($id) {
-        // TODO: Implement find() method.
+        return $this->eventSourcingRepository->load($id);
     }
 
     /**
@@ -41,7 +41,7 @@ class BroadwayPostRepository implements PostRepository
      * @param Post $post
      */
     public function save(Post $post) {
-        // TODO: Implement save() method.
+        $this->eventSourcingRepository->save($post);
     }
 
     protected static function getAggregateRootClass() {

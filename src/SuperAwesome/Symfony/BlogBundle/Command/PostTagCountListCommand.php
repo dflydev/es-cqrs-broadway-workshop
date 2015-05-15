@@ -21,7 +21,7 @@ class PostTagCountListCommand extends ContainerAwareCommand
         $repository = $this->getContainer()->get('superawesome.blog.domain.read_model.post_tag_count.repository');
 
         foreach ($repository->findAll() as $postTagCount) {
-            $output->writeln(sprintf("15%s%3d", $postTagCount->getTag(), $postTagCount->getCount()));
+            $output->writeln(sprintf("%15s%3d", $postTagCount->getTag(), $postTagCount->getCount()));
         }
     }
 }

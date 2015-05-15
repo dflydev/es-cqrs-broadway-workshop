@@ -2,7 +2,6 @@
 
 namespace SuperAwesome\Blog\Domain\ReadModel\PublishedPost;
 
-
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCreated;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasPublished;
 
@@ -20,11 +19,19 @@ class PublishedPostProjector
 
     public function applyPostWasCreated(PostWasCreated $event)
     {
-        // @TODO Implement
+        $publishedPost = new PublishedPost($event->id);
+
+        $this->repository->save($publishedPost);
     }
 
     public function applyPostWasPublished(PostWasPublished $event)
     {
-        // @TODO Implement
+        $publishedPost = $this->repository->find($event->id);
+
+        $publishedPost->title = $event->title;
+        $publishedPost->content = $event->content;
+        $publishedPost->category = $event->category;
+
+        $this->repository->save($publishedPost);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SuperAwesome\Common\Domain\Model\Adapter;
+namespace SuperAwesome\Common\Domain\Model\Adapter\Broadway;
 
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\NamedConstructorAggregateFactory;

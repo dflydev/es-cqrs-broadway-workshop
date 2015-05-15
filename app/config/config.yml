@@ -24,11 +24,13 @@ doctrine:
         default_connection:       default
         connections:
             default:
-                driver:           %doctrine_dbal_db_driver%
-                dbname:           %doctrine_dbal_db_name%
-                user:             %doctrine_dbal_db_user%
-                password:         %doctrine_dbal_db_password%
-                host:             %doctrine_dbal_db_host%
+                driver:           pdo_sqlite
+                path:             "%kernel.root_dir%/data.sqlite"
+                #driver:           %doctrine_dbal_db_driver%
+                #dbname:           %doctrine_dbal_db_name%
+                #user:             %doctrine_dbal_db_user%
+                #password:         %doctrine_dbal_db_password%
+                #host:             %doctrine_dbal_db_host%
 
 broadway:
     command_handling:

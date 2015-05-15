@@ -27,14 +27,15 @@ class BroadwayPublishedPostRepository implements PublishedPostRepository
      * @return PublishedPost
      */
     public function find($id) {
-        // TODO: Implement find() method.
+        return $this->broadwayRepository->find($id);
     }
 
     /**
      * @return PublishedPost[]
      */
-    public function findAll() {
-        // TODO: Implement findAll() method.
+    public function findAll()
+    {
+        return $this->broadwayRepository->findAll();
     }
 
     /**
@@ -42,7 +43,8 @@ class BroadwayPublishedPostRepository implements PublishedPostRepository
      *
      * @return void
      */
-    public function save(PublishedPost $publishedPost) {
-        // TODO: Implement save() method.
+    public function save(PublishedPost $publishedPost)
+    {
+        $this->broadwayRepository->save($publishedPost);
     }
 }
