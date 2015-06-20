@@ -2,6 +2,9 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post;
 
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCategorized;
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasPublished;
+
 class Post
 {
     /** @var string */
@@ -77,7 +80,8 @@ class Post
      * @param $content
      * @param $category
      */
-    public function publish($title, $content, $category) {
+    public function publish($title, $content, $category)
+    {
         $this->title = $title;
         $this->content = $content;
         $this->category = $category;
@@ -88,7 +92,8 @@ class Post
      *
      * @param string $tag
      */
-    public function addTag($tag) {
+    public function addTag($tag)
+    {
         $this->tags[$tag] = true;
     }
 
@@ -97,7 +102,8 @@ class Post
      *
      * @param string $tag
      */
-    public function removeTag($tag) {
+    public function removeTag($tag)
+    {
         if (isset($this->tags[$tag])) {
             unset($this->tags[$tag]);
         }
