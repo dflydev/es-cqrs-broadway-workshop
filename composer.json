@@ -1,6 +1,6 @@
 {
     "name": "dflydev/es-cqrs-broadway-workshop-one",
-    "description": "Introduction to Event Sourcing and CQRS with Broadway (phpday 2015)",
+    "description": "Introduction to Event Sourcing and CQRS with Broadway",
     "license": "MIT",
     "authors": [
         {
