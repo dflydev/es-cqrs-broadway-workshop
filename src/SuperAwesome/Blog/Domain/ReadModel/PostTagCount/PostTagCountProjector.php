@@ -25,4 +25,5 @@ class PostTagCountProjector
     public function applyPostWasUntagged(PostWasUntagged $event)
     {
         $this->repository->decrement($event->tag);
-    }}
+    }
+}

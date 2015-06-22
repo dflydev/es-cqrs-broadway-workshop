@@ -29,7 +29,8 @@ class PostTagCount implements SerializableInterface
     /**
      * @return string
      */
-    public function getTag() {
+    public function getTag()
+    {
         return $this->tag;
     }
 
@@ -44,7 +45,8 @@ class PostTagCount implements SerializableInterface
     /**
      * @return int
      */
-    public function getCount() {
+    public function getCount()
+    {
         return $this->count;
     }
 

@@ -19,7 +19,8 @@
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/dbal": "~2.5",
         "symfony/symfony": "~2.6",
-        "symfony/monolog-bundle": "~2.7"
+        "symfony/monolog-bundle": "~2.7",
+        "predis/predis": "^1.0"
     },
     "autoload-dev": {
         "psr-4": {

@@ -26,7 +26,8 @@ class BroadwayPublishedPostRepository implements PublishedPostRepository
      *
      * @return PublishedPost
      */
-    public function find($id) {
+    public function find($id)
+    {
         return $this->broadwayRepository->find($id);
     }
 

@@ -68,6 +68,8 @@ class PostScenario
             $this->post->getRecordedEvents()
         );
 
+        $this->post->clearRecordedEvents();
+
         return $this;
     }
 }
