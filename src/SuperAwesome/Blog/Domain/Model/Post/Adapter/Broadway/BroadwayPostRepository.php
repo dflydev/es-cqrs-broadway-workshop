@@ -26,25 +26,29 @@ class BroadwayPostRepository implements PostRepository
      *
      * @return Post
      */
-    public function find($id) {
+    public function find($id)
+    {
         return $this->eventSourcingRepository->load($id);
     }
 
     /**
      * @return Post[]
      */
-    public function findAll() {
+    public function findAll()
+    {
         // TODO: Implement findAll() method.
     }
 
     /**
      * @param Post $post
      */
-    public function save(Post $post) {
+    public function save(Post $post)
+    {
         $this->eventSourcingRepository->save($post);
     }
 
-    protected static function getAggregateRootClass() {
+    protected static function getAggregateRootClass()
+    {
         return Post::class;
     }
 }

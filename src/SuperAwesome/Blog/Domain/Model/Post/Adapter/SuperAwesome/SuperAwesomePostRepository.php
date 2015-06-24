@@ -42,7 +42,7 @@ class SuperAwesomePostRepository implements PostRepository
      */
     public function findAll()
     {
-        throw new \RuntimeException('Not implemeneted. (and will never be implemented!)');
+        throw new \RuntimeException('Not implemented. (and will never be implemented!)');
     }
 
     /**
