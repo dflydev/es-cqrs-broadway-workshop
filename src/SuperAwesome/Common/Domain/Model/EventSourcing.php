@@ -18,6 +18,11 @@ trait EventSourcing
         $this->recordedEvents[] = $event;
     }
 
+    public function clearRecordedEvents()
+    {
+        $this->recordedEvents = [];
+    }
+
     public function applyRecordedEvents(array $events)
     {
         foreach ($events as $event) {

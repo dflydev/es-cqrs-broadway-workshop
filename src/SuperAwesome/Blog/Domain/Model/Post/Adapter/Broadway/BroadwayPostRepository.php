@@ -49,6 +49,6 @@ class BroadwayPostRepository implements PostRepository
 
     protected static function getAggregateRootClass()
     {
-        return Post::class;
+        return 'SuperAwesome\Blog\Domain\Model\Post\Post';
     }
 }

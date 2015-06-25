@@ -25,7 +25,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_can_create()
     {
-        $this->markTestIncomplete('Post::create() does not exist.');
+        //$this->markTestIncomplete('Post::create() does not exist.');
 
         $id = 'my-id';
 
@@ -42,7 +42,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_can_publish()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
+        //$this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -66,7 +66,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_uncategorizes_when_publishing_with_a_different_category()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
+        //$this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -126,7 +126,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_does_not_publish_if_nothing_changed()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
+        //$this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -150,7 +150,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_can_tag()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
+        //$this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -183,7 +183,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_does_not_tag_again()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
+        //$this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';

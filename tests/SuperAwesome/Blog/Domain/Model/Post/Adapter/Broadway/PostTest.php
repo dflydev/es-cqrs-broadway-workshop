@@ -22,7 +22,7 @@ class PostTest extends AggregateRootScenarioTestCase
      */
     protected function getAggregateRootClass()
     {
-        return Post::class;
+        return 'SuperAwesome\Blog\Domain\Model\Post\Post';
     }
 
     /**
