@@ -7,10 +7,12 @@ use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCreated;
 
 class CreatePostHandlerTest extends AbstractPostHandlerTest
 {
+    /*
     public function setUp()
     {
         $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
     }
+    */
 
     /** @test */
     public function it_can_create()
