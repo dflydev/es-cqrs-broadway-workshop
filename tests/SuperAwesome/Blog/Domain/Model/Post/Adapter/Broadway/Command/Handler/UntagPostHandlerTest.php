@@ -11,15 +11,9 @@ use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUntagged;
 
 class UntagPostHandlerTest extends AbstractPostHandlerTest
 {
-    public function setUp()
-    {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-    }
-
     /** @test */
     public function it_can_untag()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';

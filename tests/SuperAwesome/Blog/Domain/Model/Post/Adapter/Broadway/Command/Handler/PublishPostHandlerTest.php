@@ -10,16 +10,10 @@ use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUncategorized;
 
 class PublishPostHandlerTest extends AbstractPostHandlerTest
 {
-    public function setUp()
-    {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-    }
 
     /** @test */
     public function it_can_publish()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -41,8 +35,6 @@ class PublishPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_uncategorizes_when_publishing_with_a_different_category()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -71,8 +63,6 @@ class PublishPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_does_not_uncategorize_when_publishing_with_same_category()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -99,8 +89,6 @@ class PublishPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_does_not_publish_if_nothing_changed()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';

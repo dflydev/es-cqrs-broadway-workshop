@@ -10,15 +10,10 @@ use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasTagged;
 
 class TagPostHandlerTest extends AbstractPostHandlerTest
 {
-    public function setUp()
-    {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-    }
-
     /** @test */
     public function it_can_tag()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
+        // $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -54,8 +49,6 @@ class TagPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_does_not_tag_again()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
