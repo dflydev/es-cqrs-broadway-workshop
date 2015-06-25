@@ -22,9 +22,6 @@ class Post
     /** @var bool[] */
     private $tags = [];
 
-    /** @var string */
-    private $status;
-
     /**
      * @param string $id
      */
