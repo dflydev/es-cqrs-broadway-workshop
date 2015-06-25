@@ -2,7 +2,9 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post\Event;
 
-class PostWasPublished
+use Broadway\Serializer\SerializableInterface;
+
+class PostWasPublished implements SerializableInterface
 {
     /**
      * @var string
