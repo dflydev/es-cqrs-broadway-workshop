@@ -12,7 +12,7 @@ class PostListCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this->setName('superawesome:blog:post:list');
-        $this->setDescription('List post category counts.');
+        $this->setDescription('List posts.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
