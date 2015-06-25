@@ -11,6 +11,11 @@ trait EventSourcing
         return $this->recordedEvents;
     }
 
+    public function clearRecordedEvents()
+    {
+        $this->recordedEvents = [];
+    }
+
     protected function recordEvent($event)
     {
         $this->handle($event);
