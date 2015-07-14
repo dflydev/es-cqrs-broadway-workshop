@@ -2,6 +2,7 @@
 
 namespace SuperAwesome\Symfony\BlogBundle\Command;
 
+use SuperAwesome\Blog\Domain\Model\Post\Command\UntagPost;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,6 +25,8 @@ class UntagPostCommand extends CommandBusCommand
         $id = $input->getArgument('id');
         $tag = $input->getArgument('tag');
 
-        // @TODO Implement
+        $command = new UntagPost($id, $tag);
+
+        $this->getCommandBus()->dispatch($command);
     }
 }
