@@ -14,7 +14,7 @@
         }
     },
     "require": {
-        "broadway/broadway": "0.6.*@dev",
+        "broadway/broadway": "^0.8",
         "vlucas/phpdotenv": "~1.1",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/dbal": "~2.5",

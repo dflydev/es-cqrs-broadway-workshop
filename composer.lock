@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "002d6c2fe69f242fe7da5b838b01b3c9",
+    "hash": "d706124dba855bcf5b83dc3a69fb521f",
+    "content-hash": "cf4654137726576ff547045b2f30026e",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -57,22 +58,22 @@
         },
         {
             "name": "broadway/broadway",
-            "version": "dev-master",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/qandidate-labs/broadway.git",
-                "reference": "d646043b3c580d54d062169f02bbb6d6d2f126d1"
+                "reference": "c2d095854e5d3a14a68c90b79cfa7aae01a7cf82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qandidate-labs/broadway/zipball/d646043b3c580d54d062169f02bbb6d6d2f126d1",
-                "reference": "d646043b3c580d54d062169f02bbb6d6d2f126d1",
+                "url": "https://api.github.com/repos/qandidate-labs/broadway/zipball/c2d095854e5d3a14a68c90b79cfa7aae01a7cf82",
+                "reference": "c2d095854e5d3a14a68c90b79cfa7aae01a7cf82",
                 "shasum": ""
             },
             "require": {
                 "beberlei/assert": "~2.0",
                 "broadway/uuid-generator": "~0.1.0",
-                "php": ">=5.3.3",
+                "php": ">=5.5.9",
                 "ramsey/uuid": "~2.4"
             },
             "require-dev": {
@@ -95,7 +96,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.6.x-dev"
+                    "dev-master": "0.8.x-dev"
                 }
             },
             "autoload": {
@@ -140,7 +141,7 @@
                 "domain-driven design",
                 "event sourcing"
             ],
-            "time": "2015-05-16 12:38:11"
+            "time": "2015-10-22 17:40:34"
         },
         {
             "name": "broadway/uuid-generator",
@@ -1089,12 +1090,12 @@
             "version": "v2.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/MonologBundle.git",
+                "url": "https://github.com/symfony/monolog-bundle.git",
                 "reference": "9320b6863404c70ebe111e9040dab96f251de7ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
                 "reference": "9320b6863404c70ebe111e9040dab96f251de7ac",
                 "shasum": ""
             },
@@ -2277,9 +2278,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "broadway/broadway": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
