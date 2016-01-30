@@ -10,16 +10,9 @@ use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUncategorized;
 
 class PublishPostHandlerTest extends AbstractPostHandlerTest
 {
-    public function setUp()
-    {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-    }
-
     /** @test */
     public function it_can_publish()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';

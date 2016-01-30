@@ -2,7 +2,9 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post\Event;
 
-class PostWasUntagged
+use Broadway\Serializer\SerializableInterface;
+
+class PostWasUntagged implements SerializableInterface
 {
     /**
      * @var string

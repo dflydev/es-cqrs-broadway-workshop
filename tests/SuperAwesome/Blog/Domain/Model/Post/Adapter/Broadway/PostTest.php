@@ -38,8 +38,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_can_create()
     {
-        $this->markTestIncomplete('Post::create() does not exist.');
-
         $id = 'my-id';
 
         $this->scenario
@@ -55,8 +53,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_can_publish()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -80,8 +76,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_uncategorizes_when_publishing_with_a_different_category()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -112,8 +106,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_does_not_uncategorize_when_publishing_with_same_category()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -167,8 +159,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_can_tag()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -201,8 +191,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_does_not_tag_again()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -235,8 +223,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_can_untag()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -272,8 +258,6 @@ class PostTest extends AggregateRootScenarioTestCase
     /** @test */
     public function it_does_not_untag_again()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
-
         $id = 'my-id';
         $title = 'the title';
         $content = 'the content';
@@ -295,6 +279,27 @@ class PostTest extends AggregateRootScenarioTestCase
                 new PostWasUntagged($id, $es),
                 new PostWasUntagged($id, $broadway),
             ])
+            ->when(function (Post $post) use ($es, $cqrs, $broadway) {
+                $post->removeTag($es);
+                $post->removeTag($cqrs);
+                $post->removeTag($broadway);
+            })
+            ->then([
+                new PostWasUntagged($id, $cqrs),
+            ])
+        ;
+    }
+
+    /** @test */
+    public function it_uses_examples()
+    {
+        $this->markTestSkipped('Sample of "Example" implementations');
+        $example = ExamplePost::draftOf('hello', 'Hello World!')
+            ->withTags('es', 'cqrs', 'broadway');
+
+        $this->scenario
+            ->withAggregateId($example->getId())
+            ->given($example->getGivenEvents())
             ->when(function (Post $post) use ($es, $cqrs, $broadway) {
                 $post->removeTag($es);
                 $post->removeTag($cqrs);
