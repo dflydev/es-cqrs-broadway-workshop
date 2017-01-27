@@ -12,6 +12,10 @@
 
 ## Tutorial Setup
 
+Prior to arriving at the event, clone this repository so that you will not have to download it at the venue. Also, make sure to run `composer install` after you have finished cloning. If you are able to do this, you are more likely to have a successful tutorial.
+
+Keep in mind that there might be last minute changes to the repository. Check the night before the event to see if you need to pull any recent changes.
+
 To be able to do the exercises in this tutorial, you need to have the following things set-up on your machine:
 
 1. Composer
