@@ -12,7 +12,7 @@ class CreatePostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_can_create()
     {
-        $this->markTestIncomplete('Post cannot be created.');
+        //$this->markTestIncomplete('Post cannot be created.');
 
         $id = 'my-id';
 

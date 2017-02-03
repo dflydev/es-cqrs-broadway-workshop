@@ -15,7 +15,7 @@ class PublishPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_can_publish()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
+        //$this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -38,7 +38,7 @@ class PublishPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_uncategorizes_when_publishing_with_a_different_category()
     {
-        $this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
+        //$this->markTestIncomplete('Post is not an EventSourcedAggregateRoot.');
 
         $id = 'my-id';
         $title = 'the title';

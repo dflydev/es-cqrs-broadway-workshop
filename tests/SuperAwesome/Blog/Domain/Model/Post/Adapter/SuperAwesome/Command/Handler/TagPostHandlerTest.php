@@ -15,7 +15,7 @@ class TagPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_can_tag()
     {
-        $this->markTestIncomplete('Post cannot be tagged.');
+        //$this->markTestIncomplete('Post cannot be tagged.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -51,7 +51,7 @@ class TagPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_does_not_tag_again()
     {
-        $this->markTestIncomplete('Post cannot be tagged.');
+        //$this->markTestIncomplete('Post cannot be tagged.');
 
         $id = 'my-id';
         $title = 'the title';
