@@ -9,7 +9,7 @@ Keep in mind that there might be last minute changes to the repository. Check th
 To be able to do the exercises in this tutorial, you need to have the following things set-up on your machine:
 
 1. Composer
-2. PHP 7.0 (or later)
+2. PHP 7.1 (or later)
 
 It is expected that you know how to edit PHP files, and run them on the command line. All exercises will revolve around writing command line scripts.
 
@@ -25,7 +25,7 @@ Now verify whether Composer works by running:
 
     composer --version
 
-### PHP 7.0
+### PHP 7.1, 7.2
 
 Please install the PHP package through your package manager. For Debian and Ubuntu, this package is named `php`.
 
@@ -35,8 +35,7 @@ To verify whether your installation worked, run the following commands:
 
 Running this command should output something like this (pay attention to the version numbers):
 
-    PHP 7.0.13-dev (cli) (built: Oct 30 2016 14:53:59) ( NTS DEBUG )
-    Copyright (c) 1997-2016 The PHP Group
-    Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
-            with Xdebug v2.6.0-dev, Copyright (c) 2002-2017, by Derick Rethans
-            with Zend OPcache v7.0.13-dev, Copyright (c) 1999-2016, by Zend Technologies
+    PHP 7.2.4 (cli) (built: Mar 29 2018 15:32:43) ( NTS )
+    Copyright (c) 1997-2018 The PHP Group
+    Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+        with blackfire v1.18.2~mac-x64-non_zts72, https://blackfire.io, by SensioLabs
