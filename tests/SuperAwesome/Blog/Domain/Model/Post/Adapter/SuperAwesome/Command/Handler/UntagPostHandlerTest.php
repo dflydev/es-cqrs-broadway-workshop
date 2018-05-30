@@ -16,7 +16,7 @@ class UntagPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_can_untag()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
+        //$this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';
@@ -55,7 +55,7 @@ class UntagPostHandlerTest extends AbstractPostHandlerTest
     /** @test */
     public function it_does_not_untag_again()
     {
-        $this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
+        //$this->markTestIncomplete('Post::instantiateForReconstitution does not exist.');
 
         $id = 'my-id';
         $title = 'the title';
