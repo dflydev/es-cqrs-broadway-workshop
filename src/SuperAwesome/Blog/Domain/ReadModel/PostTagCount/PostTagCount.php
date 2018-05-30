@@ -82,6 +82,6 @@ class PostTagCount implements Identifiable, Serializable
      * @return string
      */
     public function getId(): string {
-        return (string) $this->id;
+        return (string) $this->tag;
     }
 }

@@ -2,18 +2,16 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post;
 
+use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCategorized;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCreated;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasPublished;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasTagged;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUncategorized;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUntagged;
-use SuperAwesome\Common\Domain\Model\EventSourcing;
 
-class Post
+class Post extends EventSourcedAggregateRoot
 {
-    use EventSourcing;
-
     /** @var string */
     private $id;
 
@@ -89,7 +87,7 @@ class Post
         $this->uncategorizeIfCategoryChanged($category);
         $this->categorizeIfCatagoryChanged($category);
 
-        $this->recordEvent(new PostWasPublished(
+        $this->apply(new PostWasPublished(
             $this->id,
             $title,
             $content,
@@ -101,14 +99,14 @@ class Post
     {
         if ($category === $this->category || ! $this->category) { return; }
 
-        $this->recordEvent(new PostWasUncategorized($this->id, $this->category));
+        $this->apply(new PostWasUncategorized($this->id, $this->category));
     }
 
     protected function categorizeIfCatagoryChanged($category)
     {
         if ($category === $this->category) { return; }
 
-        $this->recordEvent(new PostWasCategorized($this->id, $category));
+        $this->apply(new PostWasCategorized($this->id, $category));
     }
 
     /**
@@ -122,7 +120,7 @@ class Post
             return;
         }
 
-        $this->recordEvent(new PostWasTagged($this->id, $tag));
+        $this->apply(new PostWasTagged($this->id, $tag));
     }
 
     public function applyPostWasTagged(PostWasTagged $event)
@@ -141,7 +139,7 @@ class Post
             return;
         }
 
-        $this->recordEvent(new PostWasUntagged($this->id, $tag));
+        $this->apply(new PostWasUntagged($this->id, $tag));
     }
 
     public function applyPostWasUntagged(PostWasUntagged $event)
@@ -152,7 +150,7 @@ class Post
     static public function create($id)
     {
         $instance = new static();
-        $instance->recordEvent(new PostWasCreated($id));
+        $instance->apply(new PostWasCreated($id));
 
         return $instance;
     }
@@ -182,5 +180,10 @@ class Post
         $this->title = $event->title;
         $this->content = $event->content;
         $this->category = $event->category;
+    }
+
+    public function getAggregateRootId(): string
+    {
+        return $this->id;
     }
 }
