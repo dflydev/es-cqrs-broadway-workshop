@@ -2,10 +2,10 @@
 
 namespace SuperAwesome\Common\Domain\Model\Adapter\Broadway;
 
-use Broadway\EventHandling\EventBusInterface;
+use Broadway\EventHandling\EventBus;
 use Broadway\EventSourcing\AggregateFactory\NamedConstructorAggregateFactory;
 use Broadway\EventSourcing\EventSourcingRepository;
-use Broadway\EventStore\EventStoreInterface;
+use Broadway\EventStore\EventStore;
 
 trait BroadwayModelRepository
 {
@@ -17,23 +17,23 @@ trait BroadwayModelRepository
     abstract public function __construct(EventSourcingRepository $eventSourcingRepository);
 
     /**
-     * @param EventStoreInterface $eventStore
-     * @param EventBusInterface $eventBus
+     * @param EventStore $eventStore
+     * @param EventBus $eventBus
      *
      * @return static
      */
-    public static function create(EventStoreInterface $eventStore, EventBusInterface $eventBus)
+    public static function create(EventStore $eventStore, EventBus $eventBus)
     {
         return new static(self::createEventSourcingRepository($eventStore, $eventBus));
     }
 
     /**
-     * @param EventStoreInterface $eventStore
-     * @param EventBusInterface $eventBus
+     * @param EventStore $eventStore
+     * @param EventBus $eventBus
      *
      * @return EventSourcingRepository
      */
-    private static function createEventSourcingRepository(EventStoreInterface $eventStore, EventBusInterface $eventBus)
+    private static function createEventSourcingRepository(EventStore $eventStore, EventBus $eventBus)
     {
         $class = static::getAggregateRootClass();
 

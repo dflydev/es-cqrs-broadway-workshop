@@ -1,3 +1,6 @@
+parameters:
+    broadway.event_store.dbal.connection: 'default'
+
 framework:
     secret: %secret%
     router:
@@ -35,10 +38,4 @@ doctrine:
 broadway:
     command_handling:
         logger:               false
-    saga:
-        repository: in_memory
-    read_model:
-        repository: elasticsearch
-        elasticsearch:
-            hosts:
-                - %elasticsearch_host%:%elasticsearch_port%
+    event_store: "my_dbal_event_store"

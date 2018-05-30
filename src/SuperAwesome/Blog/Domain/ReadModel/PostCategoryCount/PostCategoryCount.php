@@ -2,10 +2,10 @@
 
 namespace SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount;
 
-use Broadway\ReadModel\ReadModelInterface;
-use Broadway\Serializer\SerializableInterface;
+use Broadway\ReadModel\Identifiable;
+use Broadway\Serializer\Serializable;
 
-class PostCategoryCount implements ReadModelInterface, SerializableInterface
+class PostCategoryCount implements Identifiable, Serializable
 {
     /**
      * @var string
@@ -62,7 +62,7 @@ class PostCategoryCount implements ReadModelInterface, SerializableInterface
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->category;
     }
@@ -78,7 +78,7 @@ class PostCategoryCount implements ReadModelInterface, SerializableInterface
     /**
      * @return array
      */
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'category' => $this->category,

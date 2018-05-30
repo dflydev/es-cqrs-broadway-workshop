@@ -2,9 +2,10 @@
 
 namespace SuperAwesome\Blog\Domain\ReadModel\PostTagCount;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\ReadModel\Identifiable;
+use Broadway\Serializer\Serializable;
 
-class PostTagCount implements SerializableInterface
+class PostTagCount implements Identifiable, Serializable
 {
     /**
      * @var string
@@ -69,11 +70,18 @@ class PostTagCount implements SerializableInterface
     /**
      * @return array
      */
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'tag' => $this->tag,
             'count' => $this->count,
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string {
+        return (string) $this->id;
     }
 }

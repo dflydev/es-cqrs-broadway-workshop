@@ -1,8 +1,8 @@
 <?php
 
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
@@ -27,6 +27,7 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__ . '/config/config.yml');
+        $loader->load(__DIR__ . '/config/services.yml');
 
         $envParameters = $this->getEnvParameters();
         $loader->load(function (ContainerBuilder $container) use ($envParameters) {

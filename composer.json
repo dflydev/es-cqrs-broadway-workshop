@@ -14,13 +14,15 @@
         }
     },
     "require": {
-        "broadway/broadway": "^0.8",
+        "broadway/broadway": "^2",
         "vlucas/phpdotenv": "~1.1",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/dbal": "~2.5",
-        "symfony/symfony": "~2.6",
-        "symfony/monolog-bundle": "~2.7",
-        "predis/predis": "^1.0"
+        "symfony/symfony": "^2.8",
+        "symfony/monolog-bundle": "^3.2",
+        "predis/predis": "^1.0",
+        "broadway/broadway-bundle": "^0.4.1",
+        "broadway/event-store-dbal": "^0.2.1"
     },
     "autoload-dev": {
         "psr-4": {
@@ -28,6 +30,6 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7.8"
+        "phpunit/phpunit": "^7.1"
     }
 }

@@ -2,7 +2,9 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post\Event;
 
-class PostWasTagged
+use Broadway\Serializer\Serializable;
+
+class PostWasTagged implements Serializable
 {
     /**
      * @var string
@@ -34,7 +36,7 @@ class PostWasTagged
     /**
      * @return array
      */
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'id' => $this->id,

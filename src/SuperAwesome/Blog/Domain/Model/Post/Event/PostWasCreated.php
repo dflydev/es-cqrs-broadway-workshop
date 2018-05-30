@@ -2,7 +2,9 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post\Event;
 
-class PostWasCreated
+use Broadway\Serializer\Serializable;
+
+class PostWasCreated implements Serializable
 {
     /**
      * @var string
@@ -25,7 +27,7 @@ class PostWasCreated
     /**
      * @return array
      */
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'id' => $this->id,

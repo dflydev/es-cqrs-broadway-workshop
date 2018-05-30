@@ -2,21 +2,21 @@
 
 namespace SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount\Adapter\Broadway;
 
-use Broadway\ReadModel\RepositoryInterface;
+use Broadway\ReadModel\Repository;
 use SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount\PostCategoryCount;
 use SuperAwesome\Blog\Domain\ReadModel\PostCategoryCount\PostCategoryCountRepository;
 
 class BroadwayPostCategoryCountRepository implements PostCategoryCountRepository
 {
     /**
-     * @var RepositoryInterface
+     * @var Repository
      */
     private $broadwayRepository;
 
     /**
-     * @param RepositoryInterface $broadwayRepository
+     * @param Repository $broadwayRepository
      */
-    public function __construct(RepositoryInterface $broadwayRepository)
+    public function __construct(Repository $broadwayRepository)
     {
         $this->broadwayRepository = $broadwayRepository;
     }

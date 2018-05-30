@@ -2,21 +2,21 @@
 
 namespace SuperAwesome\Blog\Domain\ReadModel\PostTagCount\Adapter\Broadway;
 
-use Broadway\ReadModel\RepositoryInterface;
+use Broadway\ReadModel\Repository;
 use SuperAwesome\Blog\Domain\ReadModel\PostTagCount\PostTagCount;
 use SuperAwesome\Blog\Domain\ReadModel\PostTagCount\PostTagCountRepository;
 
 class BroadwayPostTagCountRepository implements PostTagCountRepository
 {
     /**
-     * @var RepositoryInterface
+     * @var Repository
      */
     private $broadwayRepository;
 
     /**
-     * @param RepositoryInterface $broadwayRepository
+     * @param Repository $broadwayRepository
      */
-    public function __construct(RepositoryInterface $broadwayRepository)
+    public function __construct(Repository $broadwayRepository)
     {
         $this->broadwayRepository = $broadwayRepository;
     }

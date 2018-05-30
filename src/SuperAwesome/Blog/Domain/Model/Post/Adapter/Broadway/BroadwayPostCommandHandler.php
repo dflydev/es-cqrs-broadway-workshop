@@ -2,7 +2,7 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post\Adapter\Broadway;
 
-use Broadway\CommandHandling\CommandHandler;
+use Broadway\CommandHandling\SimpleCommandHandler;
 use SuperAwesome\Blog\Domain\Model\Post\Command\CreatePost;
 use SuperAwesome\Blog\Domain\Model\Post\Command\Handler\CreatePostHandler;
 use SuperAwesome\Blog\Domain\Model\Post\Command\Handler\PublishPostHandler;
@@ -13,7 +13,7 @@ use SuperAwesome\Blog\Domain\Model\Post\Command\TagPost;
 use SuperAwesome\Blog\Domain\Model\Post\Command\UntagPost;
 use SuperAwesome\Blog\Domain\Model\Post\PostRepository;
 
-class BroadwayPostCommandHandler extends CommandHandler
+class BroadwayPostCommandHandler extends SimpleCommandHandler
 {
     /**
      * @var CreatePostHandler

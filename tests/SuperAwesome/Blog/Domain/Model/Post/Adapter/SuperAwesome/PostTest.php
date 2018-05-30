@@ -10,7 +10,7 @@ use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUncategorized;
 use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUntagged;
 use SuperAwesome\Blog\Domain\Model\Post\Post;
 
-class PostTest extends \PHPUnit_Framework_TestCase
+class PostTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var PostScenario

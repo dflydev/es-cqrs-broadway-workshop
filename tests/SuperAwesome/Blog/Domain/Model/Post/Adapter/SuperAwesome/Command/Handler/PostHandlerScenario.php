@@ -2,7 +2,7 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post\Adapter\SuperAwesome\Command\Handler;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use SuperAwesome\Common\Infrastructure\EventStore\SpyingEventStore;
 
 class PostHandlerScenario

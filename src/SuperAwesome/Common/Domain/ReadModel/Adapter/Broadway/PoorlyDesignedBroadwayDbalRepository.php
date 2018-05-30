@@ -2,13 +2,13 @@
 
 namespace SuperAwesome\Common\Domain\ReadModel\Adapter\Broadway;
 
-use Broadway\ReadModel\ReadModelInterface;
-use Broadway\ReadModel\RepositoryInterface;
-use Broadway\Serializer\SerializerInterface;
+use Broadway\ReadModel\Identifiable;
+use Broadway\ReadModel\Repository;
+use Broadway\Serializer\Serializer;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Schema;
 
-class PoorlyDesignedBroadwayDbalRepository implements RepositoryInterface
+class PoorlyDesignedBroadwayDbalRepository implements Repository
 {
     const TABLE = 'read_models';
 
@@ -18,7 +18,7 @@ class PoorlyDesignedBroadwayDbalRepository implements RepositoryInterface
     private $connection;
 
     /**
-     * @var SerializerInterface
+     * @var Serializer
      */
     private $serializer;
 
@@ -29,7 +29,7 @@ class PoorlyDesignedBroadwayDbalRepository implements RepositoryInterface
      */
     public function __construct(
         Connection $connection,
-        SerializerInterface $serializer,
+        Serializer $serializer,
         $class
     ) {
         $this->connection = $connection;
@@ -37,7 +37,7 @@ class PoorlyDesignedBroadwayDbalRepository implements RepositoryInterface
         $this->class = $class;
     }
 
-    public function save(ReadModelInterface $data)
+    public function save(Identifiable $data)
     {
         $this->connection->delete(static::TABLE, [
             'class' => $this->class,
@@ -54,7 +54,7 @@ class PoorlyDesignedBroadwayDbalRepository implements RepositoryInterface
     /**
      * @param string $id
      *
-     * @return ReadModelInterface|null
+     * @return Identifiable|null
      */
     public function find($id)
     {
@@ -79,17 +79,17 @@ class PoorlyDesignedBroadwayDbalRepository implements RepositoryInterface
     /**
      * @param array $fields
      *
-     * @return ReadModelInterface[]
+     * @return Identifiable[]
      */
-    public function findBy(array $fields)
+    public function findBy(array $fields): array
     {
         throw new \RuntimeException('Not implemented.');
     }
 
     /**
-     * @return ReadModelInterface[]
+     * @return Identifiable[]
      */
-    public function findAll()
+    public function findAll(): array
     {
         $statement = $this->connection->prepare(
             sprintf('SELECT serialized FROM %s WHERE class = :class', static::TABLE)

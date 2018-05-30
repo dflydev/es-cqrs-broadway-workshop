@@ -2,7 +2,7 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post\Adapter\SuperAwesome;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use SuperAwesome\Blog\Domain\Model\Post\Post;
 use SuperAwesome\Common\Domain\Model\AppliesRecordedEvents;
 use SuperAwesome\Common\Domain\Model\RecordsEvents;

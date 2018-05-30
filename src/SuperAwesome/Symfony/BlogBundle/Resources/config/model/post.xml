@@ -36,7 +36,7 @@
             <argument type="service" id="superawesome.blog.domain.model.post.command_handler.publish_post_handler" />
             <argument type="service" id="superawesome.blog.domain.model.post.command_handler.tag_post_handler" />
             <argument type="service" id="superawesome.blog.domain.model.post.command_handler.untag_post_handler" />
-            <tag name="command_handler" />
+            <tag name="broadway.command_handler" />
         </service>
     </services>
 </container>

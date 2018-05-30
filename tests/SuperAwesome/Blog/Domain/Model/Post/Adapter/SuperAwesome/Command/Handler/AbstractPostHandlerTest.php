@@ -8,7 +8,7 @@ use SuperAwesome\Common\Infrastructure\EventBus\SimpleEventBus;
 use SuperAwesome\Common\Infrastructure\EventStore\InMemoryEventStore;
 use SuperAwesome\Common\Infrastructure\EventStore\SpyingEventStore;
 
-abstract class AbstractPostHandlerTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractPostHandlerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var PostHandlerScenario
