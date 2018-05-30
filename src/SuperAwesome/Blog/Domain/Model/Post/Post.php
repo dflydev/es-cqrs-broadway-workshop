@@ -2,12 +2,7 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post;
 
-use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCategorized;
-use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCreated;
-use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasPublished;
-use Broadway\EventSourcing\EventSourcedAggregateRoot;
-
-class Post extends EventSourcedAggregateRoot
+class Post
 {
     /** @var string */
     private $id;
@@ -27,8 +22,9 @@ class Post extends EventSourcedAggregateRoot
     /**
      * @param string $id
      */
-    private function __construct()
+    public function __construct($id)
     {
+        $this->id = $id;
     }
 
     /**
@@ -80,14 +76,9 @@ class Post extends EventSourcedAggregateRoot
      */
     public function publish($title, $content, $category)
     {
-        $this->apply(new PostWasPublished($this->id, $title, $content, $category));
-    }
-
-    public function applyPostWasPublished(PostWasPublished $event)
-    {
-        $this->title = $event->title;
-        $this->content = $event->content;
-        $this->category = $event->category;
+        $this->title = $title;
+        $this->content = $content;
+        $this->category = $category;
     }
 
     /**
@@ -110,22 +101,5 @@ class Post extends EventSourcedAggregateRoot
         if (isset($this->tags[$tag])) {
             unset($this->tags[$tag]);
         }
-    }
-
-    public function applyPostWasCreated(PostWasCreated $event)
-    {
-        $this->id = $event->id;
-    }
-
-    public function getAggregateRootId(): string { return $this->id; }
-    static public function create($id) {
-        $instance = new static($id);
-        $instance->apply(new PostWasCreated($id));
-
-        return $instance;
-    }
-    static public function instantiateForReconstitution()
-    {
-        return new static();
     }
 }
