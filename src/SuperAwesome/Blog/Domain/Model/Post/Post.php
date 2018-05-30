@@ -2,8 +2,18 @@
 
 namespace SuperAwesome\Blog\Domain\Model\Post;
 
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCategorized;
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasCreated;
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasPublished;
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasTagged;
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUncategorized;
+use SuperAwesome\Blog\Domain\Model\Post\Event\PostWasUntagged;
+use SuperAwesome\Common\Domain\Model\EventSourcing;
+
 class Post
 {
+    use EventSourcing;
+
     /** @var string */
     private $id;
 
@@ -19,12 +29,8 @@ class Post
     /** @var bool[] */
     private $tags = [];
 
-    /**
-     * @param string $id
-     */
-    public function __construct($id)
+    private function __construct()
     {
-        $this->id = $id;
     }
 
     /**
@@ -76,9 +82,33 @@ class Post
      */
     public function publish($title, $content, $category)
     {
-        $this->title = $title;
-        $this->content = $content;
-        $this->category = $category;
+        if ($this->title === $title && $this->content === $content && $this->category === $category) {
+            return;
+        }
+
+        $this->uncategorizeIfCategoryChanged($category);
+        $this->categorizeIfCatagoryChanged($category);
+
+        $this->recordEvent(new PostWasPublished(
+            $this->id,
+            $title,
+            $content,
+            $category
+        ));
+    }
+
+    protected function uncategorizeIfCategoryChanged($category)
+    {
+        if ($category === $this->category || ! $this->category) { return; }
+
+        $this->recordEvent(new PostWasUncategorized($this->id, $this->category));
+    }
+
+    protected function categorizeIfCatagoryChanged($category)
+    {
+        if ($category === $this->category) { return; }
+
+        $this->recordEvent(new PostWasCategorized($this->id, $category));
     }
 
     /**
@@ -88,7 +118,16 @@ class Post
      */
     public function addTag($tag)
     {
-        $this->tags[$tag] = true;
+        if (isset($this->tags[$tag])) {
+            return;
+        }
+
+        $this->recordEvent(new PostWasTagged($this->id, $tag));
+    }
+
+    public function applyPostWasTagged(PostWasTagged $event)
+    {
+        $this->tags[$event->tag] = true;
     }
 
     /**
@@ -98,8 +137,50 @@ class Post
      */
     public function removeTag($tag)
     {
-        if (isset($this->tags[$tag])) {
-            unset($this->tags[$tag]);
+        if (! isset($this->tags[$tag])) {
+            return;
         }
+
+        $this->recordEvent(new PostWasUntagged($this->id, $tag));
+    }
+
+    public function applyPostWasUntagged(PostWasUntagged $event)
+    {
+        unset($this->tags[$event->tag]);
+    }
+
+    static public function create($id)
+    {
+        $instance = new static();
+        $instance->recordEvent(new PostWasCreated($id));
+
+        return $instance;
+    }
+
+    static public function instantiateForReconstitution()
+    {
+        return new static();
+    }
+
+    public function applyPostWasCreated(PostWasCreated $event)
+    {
+        $this->id = $event->id;
+    }
+
+    public function applyPostWasCategorized(PostWasCategorized $event)
+    {
+        $this->category = $event->category;
+    }
+
+    public function applyPostWasUncategorized(PostWasUncategorized $event)
+    {
+        $this->category = null;
+    }
+
+    public function applyPostWasPublished(PostWasPublished $event)
+    {
+        $this->title = $event->title;
+        $this->content = $event->content;
+        $this->category = $event->category;
     }
 }

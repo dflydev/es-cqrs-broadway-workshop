@@ -36,7 +36,7 @@ class PostWasUntagged implements Serializable
     /**
      * @return array
      */
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'id' => $this->id,
